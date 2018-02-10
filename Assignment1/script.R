@@ -48,3 +48,5 @@ corAtt4Att6 <- cor(pima_indians_diabetes[,4], pima_indians_diabetes[,6], use="na
 corAtt5Att6 <- cor(pima_indians_diabetes[,5], pima_indians_diabetes[,6], use="na.or.complete")
 #------------------------------------------------------------------------------------
 #create scatterplot for attributes 3 and 6, create scatterplot for attributes 2 and 7 
+plot(pima_indians_diabetes[,3], pima_indians_diabetes[,6], main="Diastolic Blood Pressure VS. Body Mass Index", xlab="Blood Pressure", ylab="BMI")
+plot(pima_indians_diabetes[,2], pima_indians_diabetes[,7], main="Plasma Glucose Concentration VS. Diabetes Pedigree", xlab="Plasma Glucose Concentration", ylab="Diabetes Pedigree")
