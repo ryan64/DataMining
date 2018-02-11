@@ -20,6 +20,7 @@ meanAtt6 <- mean(pima_indians_diabetes[,6])
 sdAtt6 <- sd(pima_indians_diabetes[,6])
 #------------------------------------------------------------------------------------
 #ignore zero's for attributes 3-5 and store covariance for attributes 2-6  
+pima_indians_diabetes[,3:5][pima_indians_diabetes[,3:5] == 0] <- NA
 matAtt2 <- data.matrix(pima_indians_diabetes[,2])
 covAtt2 <- cov(matAtt2)
 
@@ -64,4 +65,17 @@ hist(pima_indians_diabetes[,3][pima_indians_diabetes[,9] == 1])
 
 hist(pima_indians_diabetes[,6][pima_indians_diabetes[,9] == 0])
 hist(pima_indians_diabetes[,6][pima_indians_diabetes[,9] == 1])
+#------------------------------------------------------------------------------------
+#create boxplot for attrubutes 2, 7, 8
+boxplot(pima_indians_diabetes[,2])
+boxplot(pima_indians_diabetes[,2][pima_indians_diabetes[,9] == 0])
+boxplot(pima_indians_diabetes[,2][pima_indians_diabetes[,9] == 1])
+
+boxplot(pima_indians_diabetes[,7])
+boxplot(pima_indians_diabetes[,7][pima_indians_diabetes[,9] == 0])
+boxplot(pima_indians_diabetes[,7][pima_indians_diabetes[,9] == 1])
+
+boxplot(pima_indians_diabetes[,8])
+boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 0])
+boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 1])
 #------------------------------------------------------------------------------------
