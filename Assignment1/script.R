@@ -50,3 +50,18 @@ corAtt5Att6 <- cor(pima_indians_diabetes[,5], pima_indians_diabetes[,6], use="na
 #create scatterplot for attributes 3 and 6, create scatterplot for attributes 2 and 7 
 plot(pima_indians_diabetes[,3], pima_indians_diabetes[,6], main="Diastolic Blood Pressure VS. Body Mass Index", xlab="Blood Pressure", ylab="BMI")
 plot(pima_indians_diabetes[,2], pima_indians_diabetes[,7], main="Plasma Glucose Concentration VS. Diabetes Pedigree", xlab="Plasma Glucose Concentration", ylab="Diabetes Pedigree")
+#------------------------------------------------------------------------------------
+#create histogram for attributes 2, 3, and 6
+hist(pima_indians_diabetes[,2])
+hist(pima_indians_diabetes[,3])
+hist(pima_indians_diabetes[,6])
+#create histogram for attributes 2, 3, and 6 with instances of class 1 and 0
+hist(pima_indians_diabetes[,2][pima_indians_diabetes[,9] == 0])
+hist(pima_indians_diabetes[,2][pima_indians_diabetes[,9] == 1])
+
+hist(pima_indians_diabetes[,3][pima_indians_diabetes[,9] == 0])
+hist(pima_indians_diabetes[,3][pima_indians_diabetes[,9] == 1])
+
+hist(pima_indians_diabetes[,6][pima_indians_diabetes[,9] == 0])
+hist(pima_indians_diabetes[,6][pima_indians_diabetes[,9] == 1])
+#------------------------------------------------------------------------------------
