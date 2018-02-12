@@ -1,6 +1,8 @@
 #lines 2-3 simply store/view the data set for indian diabetes
+library(scatterplot3d) #import 3d library
 pima_indians_diabetes <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data", header = FALSE, sep = ",")
 View(pima_indians_diabetes)
+attach(pima_indians_diabetes) #for 3d scatterplots
 
 #------------------------------------------------------------------------------------
 #ignore zero's for attributes 3-5 and store mean/sd for attributes 2-6  
@@ -79,3 +81,6 @@ boxplot(pima_indians_diabetes[,8])
 boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 0])
 boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 1])
 #------------------------------------------------------------------------------------
+#create two 3D scatterplots, one for attributes 2, 3, 6 and one for attributes 2, 4, 6
+scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,3], z = pima_indians_diabetes[,6], main = "Attributes 2, 3 and 6")
+scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,4], z = pima_indians_diabetes[,6], main = "Attributes 2, 4 and 6")
