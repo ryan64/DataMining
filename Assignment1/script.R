@@ -81,6 +81,10 @@ boxplot(pima_indians_diabetes[,8])
 boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 0])
 boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 1])
 #------------------------------------------------------------------------------------
+#create supervised scatterplots for all pairs of attributes 2-6
+
+
 #create two 3D scatterplots, one for attributes 2, 3, 6 and one for attributes 2, 4, 6
-scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,3], z = pima_indians_diabetes[,6], main = "Attributes 2, 3 and 6")
-scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,4], z = pima_indians_diabetes[,6], main = "Attributes 2, 4 and 6")
+scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,3], z = pima_indians_diabetes[,6], xlab = "Plasma Glucose Concentration", ylab = "Diastolic Blood Pressure", zlab = "BMI", main = "Attributes 2, 3 and 6")
+scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,4], z = pima_indians_diabetes[,6], xlab = "Plasma Glucose Concentration", ylab = "Tricep Skin Fold Thickness", zlab = "BMI", main = "Attributes 2, 4 and 6")
+#------------------------------------------------------------------------------------
