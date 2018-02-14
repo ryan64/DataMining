@@ -105,3 +105,12 @@ scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,4], z = 
 stars(head(subset(pima_indians_diabetes_clean[,c("V1","V2","V3","V8")], pima_indians_diabetes_clean$V9 == 0), 10), key.loc = c(7,2))
 stars(head(subset(pima_indians_diabetes_clean[,c("V1","V2","V3","V8")], pima_indians_diabetes_clean$V9 == 1), 10), key.loc = c(7,2))
 #------------------------------------------------------------------------------------
+#Number 8
+s <- scale(pima_indians_diabetes_clean)
+zscores <- data.frame(a = s[,1], b = s[,2], c = s[,3], d = s[,4], e = s[,5], f = s[,6], g = s[,7], h = s[,8], z = pima_indians_diabetes_clean[,9])
+newmodel <- lm(z ~ a + b + c + d + e + f + g + h, data = zscores)
+newmodel$coefficients
+summary(newmodel)$r.squared
+newmodel2 <- lm(z ~ a + b + c + f + g + h, data = zscores)
+newmodel2$coefficients
+summary(newmodel2)$r.squared
