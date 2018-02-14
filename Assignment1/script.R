@@ -1,11 +1,13 @@
 #lines 2-3 simply store/view the data set for indian diabetes
-library(scatterplot3d) #import 3d library
 pima_indians_diabetes <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data", header = FALSE, sep = ",")
 View(pima_indians_diabetes)
-attach(pima_indians_diabetes) #for 3d scatterplots
+
+#change the file location when you run script
+pima_indians_diabetes_clean <- read.csv(file = "/home/ryan/Downloads/Assignment 1.csv", header = FALSE)
+View(pima_indians_diabetes_clean)
 
 #------------------------------------------------------------------------------------
-#ignore zero's for attributes 3-5 and store mean/sd for attributes 2-6  
+#ignore zero's for attributes 3-5 and store mean/sd for attributes 2-6
 meanAtt2 <- mean(pima_indians_diabetes[,2])
 sdAtt2 <- sd(pima_indians_diabetes[,2])
 
@@ -82,9 +84,24 @@ boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 0])
 boxplot(pima_indians_diabetes[,8][pima_indians_diabetes[,9] == 1])
 #------------------------------------------------------------------------------------
 #create supervised scatterplots for all pairs of attributes 2-6
-
+plot(pima_indians_diabetes[,2], pima_indians_diabetes[,3], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,2], pima_indians_diabetes[,4], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,2], pima_indians_diabetes[,5], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,2], pima_indians_diabetes[,6], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,3], pima_indians_diabetes[,4], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,3], pima_indians_diabetes[,5], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,3], pima_indians_diabetes[,6], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,4], pima_indians_diabetes[,5], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,4], pima_indians_diabetes[,6], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
+plot(pima_indians_diabetes[,5], pima_indians_diabetes[,6], col = ifelse(pima_indians_diabetes$V9 == 0, "red", "blue"))
 
 #create two 3D scatterplots, one for attributes 2, 3, 6 and one for attributes 2, 4, 6
+library(scatterplot3d) #import 3d library
+attach(pima_indians_diabetes) #for 3d scatterplots
 scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,3], z = pima_indians_diabetes[,6], xlab = "Plasma Glucose Concentration", ylab = "Diastolic Blood Pressure", zlab = "BMI", main = "Attributes 2, 3 and 6")
 scatterplot3d(x = pima_indians_diabetes[,2], y = pima_indians_diabetes[,4], z = pima_indians_diabetes[,6], xlab = "Plasma Glucose Concentration", ylab = "Tricep Skin Fold Thickness", zlab = "BMI", main = "Attributes 2, 4 and 6")
+#------------------------------------------------------------------------------------
+#Create Star plot for first 10 instances of class 0 and first 10 instances of class 1 for attributes 1, 2, 3, 8.
+stars(head(subset(pima_indians_diabetes_clean[,c("V1","V2","V3","V8")], pima_indians_diabetes_clean$V9 == 0), 10), key.loc = c(7,2))
+stars(head(subset(pima_indians_diabetes_clean[,c("V1","V2","V3","V8")], pima_indians_diabetes_clean$V9 == 1), 10), key.loc = c(7,2))
 #------------------------------------------------------------------------------------
