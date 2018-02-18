@@ -2,7 +2,7 @@
 pima_indians_diabetes <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data", header = FALSE, sep = ",")
 View(pima_indians_diabetes)
 
-#change the file location when you run script
+#MESSAGE FOR TA, PLEASE CHANGE FILE WHEN YOU RUN SCRIPT 
 pima_indians_diabetes_clean <- read.csv(file = "/home/ryan/Downloads/Assignment 1.csv", header = FALSE)
 View(pima_indians_diabetes_clean)
 
@@ -115,6 +115,7 @@ newmodel2 <- lm(z ~ a + b + c + f + g + h, data = zscores)
 newmodel2$coefficients
 summary(newmodel2)$r.squared
 #------------------------------------------------------------------------------------
+#Number 9
 library(rpart)
 tree <- rpart(z ~ a + b + c + d + e + f + g + h, method="class", data = zscores)
 plot(tree, uniform=TRUE, main="Classification Tree for Pima Indians")
