@@ -114,3 +114,17 @@ summary(newmodel)$r.squared
 newmodel2 <- lm(z ~ a + b + c + f + g + h, data = zscores)
 newmodel2$coefficients
 summary(newmodel2)$r.squared
+#------------------------------------------------------------------------------------
+library(rpart)
+tree <- rpart(z ~ a + b + c + d + e + f + g + h, method="class", data = zscores)
+plot(tree, uniform=TRUE, main="Classification Tree for Pima Indians")
+text(tree, use.n=TRUE, all=TRUE, cex=.8)
+
+rtree <- rpart(z ~ a + c + d + e + f + g + h, method="class", data = zscores)
+plot(rtree, uniform=TRUE, main="Classification Tree for Pima Indians without Glucose")
+text(rtree, use.n=TRUE, all=TRUE, cex=.8)
+
+mtree <- rpart(z ~ a + b + c + f + g + h, method="class", data = zscores)
+plot(mtree, uniform=TRUE, main="Classification Tree without Triceps and Insulin")
+text(mtree, use.n=TRUE, all=TRUE, cex=.8)
+
