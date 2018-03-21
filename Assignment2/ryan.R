@@ -168,5 +168,13 @@ entropy(factor(PAM5_1$clustering), dataframe[,13])
 PAM10_1 <- pam(d, 10)
 entropy(factor(PAM10_1$clustering), dataframe[,13])
 
-#Question 7
+#number 7:
+dbs = dbscan(complex9_rn32[1:2],12.3,7,showplot=1)
+entropy(factor(dbs$cluster),complex9_rn32$V3)
+
+dbs2 = dbscan(whitewine_table[1:11],1.4,15)
+entropy(factor(dbs2$cluster),whitewine_table$Class)
+ordinalVariation(factor(dbs2$cluster),whitewine_table$Class)
+
+#number 8:
 
