@@ -148,13 +148,19 @@ mdist<-function(d)
 #Question 5
 km9_1 <- kmeans(complex9_rn32, 9)
 plotcluster(complex9_rn32, km9_1$cluster,  9)
+entropy(factor(km9_1$cluster),complex9_rn32$V3)
+
 km9_2 <- kmeans(complex9_rn32, 9)
 plotcluster(complex9_rn32, km9_2$cluster, 9)
+entropy(factor(km9_2$cluster),complex9_rn32$V3)
 
 km18_1 <- kmeans(complex9_rn32, 18)
 plotcluster(complex9_rn32, km18_1$cluster, 18)
+entropy(factor(km18_1$cluster),complex9_rn32$V3)
+
 km18_2 <- kmeans(complex9_rn32, 18)
 plotcluster(complex9_rn32, km18_2$cluster, 18)
+entropy(factor(km18_2$cluster),complex9_rn32$V3)
 
 #Question 6
 set.seed(4335)
@@ -176,5 +182,9 @@ dbs2 = dbscan(whitewine_table[1:11],1.4,15)
 entropy(factor(dbs2$cluster),whitewine_table$Class)
 ordinalVariation(factor(dbs2$cluster),whitewine_table$Class)
 
-#number 8:
+#number 8: 
+
+
+#number 9: 
+
 
