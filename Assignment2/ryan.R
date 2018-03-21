@@ -1,5 +1,6 @@
 install.packages("fpc")
 library(fpc)
+library(cluster)
 
 whitewine_table <- read.table("/home/ryan/Downloads/winequality-white.csv", header = TRUE, sep = ";", col.names = c("a","b","c","d","e","f","g","h","i","j","k","l"))
 complex9_rn32 <- read.table("/home/ryan/Downloads/Complex9_RN32.txt", header = FALSE, sep = ",")
@@ -18,6 +19,18 @@ dataframe$m[dataframe$m == 5] = "D"
 dataframe$m[dataframe$m <= 4] = "E"
 
 #Question 1
+entropyvec <- function(vec) {
+  s <- sum(vec)
+  
+  totalh <- Reduce(function(acc, elem) {
+    prob <- elem / s
+    h <- if (prob == 0) 0 else prob * log2(prob)
+    return (acc - h)
+  }, vec, 0)
+  
+  return (totalh)
+}
+
 entropy <- function(clusterassignment, groundtruth) {
   lvl<-factor(clusterassignment)
   clusterlevels <- levels(lvl)
@@ -151,3 +164,5 @@ km10_1 <- kmeans(whitewine_table, 10, nstart = 15)
 temp_dataframe = head(data.frame(fixed_acidity = whitewine_table[,1], volatile_acidity = whitewine_table[,2], citric_acid = whitewine_table[,3], residual_sugar = whitewine_table[,4], chlorides = whitewine_table[,5], free_sulfur_dioxide = whitewine_table[,6], total_sulfur_dioxide = whitewine_table[,7], density = whitewine_table[,8], pH = whitewine_table[,9], sulphates = whitewine_table[,10], alcohol = whitewine_table[,11]),11)
 d = mdist(temp_dataframe)
 d
+PAM5_1 <- pam(d, 5)
+PAM10_1 <- pam(d, 10)
