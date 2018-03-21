@@ -142,3 +142,12 @@ km18_1 <- kmeans(complex9_rn32, 18)
 plotcluster(complex9_rn32, km18_1$cluster, 18)
 km18_2 <- kmeans(complex9_rn32, 18)
 plotcluster(complex9_rn32, km18_2$cluster, 18)
+
+#Question 6
+set.seed(4335)
+km5_1 <- kmeans(whitewine_table, 5, nstart = 15)
+set.seed(4335)
+km10_1 <- kmeans(whitewine_table, 10, nstart = 15)
+temp_dataframe = head(data.frame(fixed_acidity = whitewine_table[,1], volatile_acidity = whitewine_table[,2], citric_acid = whitewine_table[,3], residual_sugar = whitewine_table[,4], chlorides = whitewine_table[,5], free_sulfur_dioxide = whitewine_table[,6], total_sulfur_dioxide = whitewine_table[,7], density = whitewine_table[,8], pH = whitewine_table[,9], sulphates = whitewine_table[,10], alcohol = whitewine_table[,11]),11)
+d = mdist(temp_dataframe)
+d
