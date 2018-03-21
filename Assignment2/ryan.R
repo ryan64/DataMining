@@ -161,8 +161,12 @@ set.seed(4335)
 km5_1 <- kmeans(whitewine_table, 5, nstart = 15)
 set.seed(4335)
 km10_1 <- kmeans(whitewine_table, 10, nstart = 15)
-temp_dataframe = head(data.frame(fixed_acidity = whitewine_table[,1], volatile_acidity = whitewine_table[,2], citric_acid = whitewine_table[,3], residual_sugar = whitewine_table[,4], chlorides = whitewine_table[,5], free_sulfur_dioxide = whitewine_table[,6], total_sulfur_dioxide = whitewine_table[,7], density = whitewine_table[,8], pH = whitewine_table[,9], sulphates = whitewine_table[,10], alcohol = whitewine_table[,11]),11)
+temp_dataframe = data.frame(fixed_acidity = whitewine_table[,1], volatile_acidity = whitewine_table[,2], citric_acid = whitewine_table[,3], residual_sugar = whitewine_table[,4], chlorides = whitewine_table[,5], free_sulfur_dioxide = whitewine_table[,6], total_sulfur_dioxide = whitewine_table[,7], density = whitewine_table[,8], pH = whitewine_table[,9], sulphates = whitewine_table[,10], alcohol = whitewine_table[,11])
 d = mdist(temp_dataframe)
-d
 PAM5_1 <- pam(d, 5)
+entropy(factor(PAM5_1$clustering), dataframe[,13])
 PAM10_1 <- pam(d, 10)
+entropy(factor(PAM10_1$clustering), dataframe[,13])
+
+#Question 7
+
