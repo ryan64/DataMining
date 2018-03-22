@@ -1,4 +1,5 @@
 install.packages("fpc")
+install.packages("e1071")
 library(fpc)
 library(cluster)
 
@@ -186,5 +187,17 @@ ordinalVariation(factor(dbs2$cluster),whitewine_table$Class)
 
 
 #number 9: 
-
-
+model <- lm(l ~ a + b + c + d + e + f + g + h + i + j + k, data = dataframe)
+model$coefficients
+sm = summary(model)
+sm$r.squared
+mean(sm$residuals^2)
+library(e1071)
+svm.model <- svm(l ~ a + b + c + d + e + f + g + h + i + j + k,
+                 data=dataframe,
+                 kernel="linear"
+)
+pr = predict(svm.model,data = dataframe)
+squaredError.svm <- (pr-dataframe$l)^2
+MSE.Regression <- mean(squaredError.svm)
+MSE.Regression
